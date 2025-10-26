@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Master Trader Dashboard - 90% Win Rate</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>🚀 Master Trader Pro</h1>
+                <span class="tagline">90% Win Rate Prediction System</span>
+            </div>
+            <div class="market-status">
+                <div class="status-item">
+                    <span class="label">Fear & Greed:</span>
+                    <span id="fearGreedValue" class="value">Loading...</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">Market Trend:</span>
+                    <span id="marketTrend" class="value bullish">BULLISH</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Left Panel - Chart & Analysis -->
+            <div class="left-panel">
+                <!-- Symbol Selector -->
+                <div class="symbol-selector">
+                    <select id="symbolSelect">
+                        <option value="BTC/USDT">BTC/USDT</option>
+                        <option value="ETH/USDT">ETH/USDT</option>
+                        <option value="BNB/USDT">BNB/USDT</option>
+                        <option value="SOL/USDT">SOL/USDT</option>
+                        <option value="XRP/USDT">XRP/USDT</option>
+                        <option value="ADA/USDT">ADA/USDT</option>
+                        <option value="DOGE/USDT">DOGE/USDT</option>
+                        <option value="MATIC/USDT">MATIC/USDT</option>
+                        <option value="DOT/USDT">DOT/USDT</option>
+                        <option value="AVAX/USDT">AVAX/USDT</option>
+                        <option value="LINK/USDT">LINK/USDT</option>
+                        <option value="UNI/USDT">UNI/USDT</option>
+                        <option value="ATOM/USDT">ATOM/USDT</option>
+                        <option value="LTC/USDT">LTC/USDT</option>
+                        <option value="ETC/USDT">ETC/USDT</option>
+                        <option value="XLM/USDT">XLM/USDT</option>
+                        <option value="NEAR/USDT">NEAR/USDT</option>
+                        <option value="APT/USDT">APT/USDT</option>
+                        <option value="ARB/USDT">ARB/USDT</option>
+                        <option value="OP/USDT">OP/USDT</option>
+                        <option value="SUI/USDT">SUI/USDT</option>
+                        <option value="TIA/USDT">TIA/USDT</option>
+                        <option value="SEI/USDT">SEI/USDT</option>
+                        <option value="INJ/USDT">INJ/USDT</option>
+                        <option value="FTM/USDT">FTM/USDT</option>
+                        <option value="ALGO/USDT">ALGO/USDT</option>
+                        <option value="VET/USDT">VET/USDT</option>
+                        <option value="ICP/USDT">ICP/USDT</option>
+                        <option value="FIL/USDT">FIL/USDT</option>
+                        <option value="HBAR/USDT">HBAR/USDT</option>
+                        <option value="APE/USDT">APE/USDT</option>
+                        <option value="SAND/USDT">SAND/USDT</option>
+                        <option value="MANA/USDT">MANA/USDT</option>
+                        <option value="AXS/USDT">AXS/USDT</option>
+                        <option value="GALA/USDT">GALA/USDT</option>
+                        <option value="RUNE/USDT">RUNE/USDT</option>
+                        <option value="AAVE/USDT">AAVE/USDT</option>
+                        <option value="MKR/USDT">MKR/USDT</option>
+                        <option value="SNX/USDT">SNX/USDT</option>
+                        <option value="CRV/USDT">CRV/USDT</option>
+                        <option value="LDO/USDT">LDO/USDT</option>
+                        <option value="PEPE/USDT">PEPE/USDT</option>
+                        <option value="SHIB/USDT">SHIB/USDT</option>
+                        <option value="WIF/USDT">WIF/USDT</option>
+                        <option value="BONK/USDT">BONK/USDT</option>
+                        <option value="FLOKI/USDT">FLOKI/USDT</option>
+                        <option value="ORDI/USDT">ORDI/USDT</option>
+                        <option value="STX/USDT">STX/USDT</option>
+                        <option value="IMX/USDT">IMX/USDT</option>
+                        <option value="BLUR/USDT">BLUR/USDT</option>
+                        <option value="TRX/USDT">TRX/USDT</option>
+                        <option value="TON/USDT">TON/USDT</option>
+                        <option value="BCH/USDT">BCH/USDT</option>
+                        <option value="XMR/USDT">XMR/USDT</option>
+                        <option value="THETA/USDT">THETA/USDT</option>
+                        <option value="FET/USDT">FET/USDT</option>
+                        <option value="RENDER/USDT">RENDER/USDT</option>
+                        <option value="GRT/USDT">GRT/USDT</option>
+                        <option value="JASMY/USDT">JASMY/USDT</option>
+                        <option value="SUSHI/USDT">SUSHI/USDT</option>
+                        <option value="COMP/USDT">COMP/USDT</option>
+                        <option value="YFI/USDT">YFI/USDT</option>
+                        <option value="1INCH/USDT">1INCH/USDT</option>
+                        <option value="ENJ/USDT">ENJ/USDT</option>
+                        <option value="CHZ/USDT">CHZ/USDT</option>
+                        <option value="ZIL/USDT">ZIL/USDT</option>
+                        <option value="BAT/USDT">BAT/USDT</option>
+                        <option value="ZRX/USDT">ZRX/USDT</option>
+                        <option value="WAVES/USDT">WAVES/USDT</option>
+                        <option value="KAVA/USDT">KAVA/USDT</option>
+                        <option value="CELO/USDT">CELO/USDT</option>
+                        <option value="ROSE/USDT">ROSE/USDT</option>
+                        <option value="MASK/USDT">MASK/USDT</option>
+                        <option value="DYDX/USDT">DYDX/USDT</option>
+                        <option value="GMT/USDT">GMT/USDT</option>
+                        <option value="APE/USDT">APE/USDT</option>
+                        <option value="WOO/USDT">WOO/USDT</option>
+                        <option value="MAGIC/USDT">MAGIC/USDT</option>
+                        <option value="PENDLE/USDT">PENDLE/USDT</option>
+                        <option value="JTO/USDT">JTO/USDT</option>
+                        <option value="PYTH/USDT">PYTH/USDT</option>
+                        <option value="MEME/USDT">MEME/USDT</option>
+                        <option value="JUP/USDT">JUP/USDT</option>
+                        <option value="WLD/USDT">WLD/USDT</option>
+                        <option value="STRK/USDT">STRK/USDT</option>
+                        <option value="MANTA/USDT">MANTA/USDT</option>
+                        <option value="ALT/USDT">ALT/USDT</option>
+                        <option value="PIXEL/USDT">PIXEL/USDT</option>
+                        <option value="PORTAL/USDT">PORTAL/USDT</option>
+                        <option value="AEVO/USDT">AEVO/USDT</option>
+                        <option value="DYM/USDT">DYM/USDT</option>
+                        <option value="METIS/USDT">METIS/USDT</option>
+                        <option value="WEN/USDT">WEN/USDT</option>
+                        <option value="BOME/USDT">BOME/USDT</option>
+                        <option value="ETHFI/USDT">ETHFI/USDT</option>
+                        <option value="ENA/USDT">ENA/USDT</option>
+                        <option value="W/USDT">W/USDT</option>
+                        <option value="ONDO/USDT">ONDO/USDT</option>
+                        <option value="REZ/USDT">REZ/USDT</option>
+                        <option value="OMNI/USDT">OMNI/USDT</option>
+                        <option value="SAGA/USDT">SAGA/USDT</option>
+                        <option value="TAO/USDT">TAO/USDT</option>
+                        <option value="NOT/USDT">NOT/USDT</option>
+                        <option value="IO/USDT">IO/USDT</option>
+                        <option value="ZK/USDT">ZK/USDT</option>
+                        <option value="ZRO/USDT">ZRO/USDT</option>
+                        <option value="LISTA/USDT">LISTA/USDT</option>
+                        <option value="DOGS/USDT">DOGS/USDT</option>
+                        <option value="HMSTR/USDT">HMSTR/USDT</option>
+                        <option value="CATI/USDT">CATI/USDT</option>
+                        <option value="NEIRO/USDT">NEIRO/USDT</option>
+                        <option value="TURBO/USDT">TURBO/USDT</option>
+                        <option value="BABYDOGE/USDT">BABYDOGE/USDT</option>
+                        <option value="1000SATS/USDT">1000SATS/USDT</option>
+                        <option value="RATS/USDT">RATS/USDT</option>
+                    </select>
+                    <select id="timeframeSelect">
+                        <option value="1m">1m</option>
+                        <option value="5m">5m</option>
+                        <option value="15m">15m</option>
+                        <option value="1h" selected>1h</option>
+                        <option value="4h">4h</option>
+                        <option value="1d">1d</option>
+                    </select>
+                    <button id="refreshBtn" class="refresh-btn">🔄 Refresh</button>
+                    <button id="watchlistBtn" class="watchlist-btn">⭐ Watchlist</button>
+                    <button id="recommendationsBtn" class="recommendations-btn">🎯 AI Recommendations</button>
+                </div>
+
+                <!-- Watchlist Modal -->
+                <div id="watchlistModal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>⭐ My Watchlist</h3>
+                            <span class="close-modal" data-modal="watchlistModal">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            <div id="watchlistItems"></div>
+                            <button id="addToWatchlist" class="add-watchlist-btn">+ Add Current Coin</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendations Modal -->
+                <div id="recommendationsModal" class="modal" style="display: none;">
+                    <div class="modal-content modal-large">
+                        <div class="modal-header">
+                            <h3>🎯 AI Trading Recommendations - Pro Trader Analysis</h3>
+                            <span class="close-modal" data-modal="recommendationsModal">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            <div class="scan-status">
+                                <button id="scanMarketsBtn" class="scan-btn">🔍 Scan Markets Now</button>
+                                <span id="scanStatus"></span>
+                            </div>
+                            <div id="recommendationsItems"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trading Chart -->
+                <div class="chart-container">
+                    <div id="tradingChart"></div>
+                </div>
+
+                <!-- Prediction Panel -->
+                <div class="prediction-panel">
+                    <h3>🎯 AI Prediction</h3>
+                    <div class="prediction-result">
+                        <div class="prediction-direction" id="predictionDirection">
+                            <span class="direction-label">Next Move:</span>
+                            <span class="direction-value bullish">BULLISH 📈</span>
+                        </div>
+                        <div class="confidence-score">
+                            <span class="confidence-label">Confidence:</span>
+                            <span class="confidence-value" id="confidenceScore">92%</span>
+                        </div>
+                    </div>
+                    <div class="prediction-details">
+                        <div class="detail-item">
+                            <span>Target Price:</span>
+                            <span id="targetPrice">$45,200</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Stop Loss:</span>
+                            <span id="stopLoss">$42,800</span>
+                        </div>
+                        <div class="detail-item">
+                            <span>Risk/Reward:</span>
+                            <span id="riskReward">1:3.2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel - Indicators & Data -->
+            <div class="right-panel">
+                <!-- Technical Indicators -->
+                <div class="indicators-panel">
+                    <h3>📊 Technical Indicators</h3>
+                    <div class="indicator-grid">
+                        <div class="indicator-item">
+                            <span class="indicator-name">RSI (14):</span>
+                            <span class="indicator-value" id="rsiValue">65.2</span>
+                            <span class="indicator-signal neutral">NEUTRAL</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-name">MACD:</span>
+                            <span class="indicator-value" id="macdValue">+0.045</span>
+                            <span class="indicator-signal bullish">BULLISH</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-name">EMA 20:</span>
+                            <span class="indicator-value" id="ema20Value">$43,250</span>
+                            <span class="indicator-signal bullish">ABOVE</span>
+                        </div>
+                        <div class="indicator-item">
+                            <span class="indicator-name">Volume:</span>
+                            <span class="indicator-value" id="volumeValue">High</span>
+                            <span class="indicator-signal bullish">STRONG</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Market Sentiment -->
+                <div class="sentiment-panel">
+                    <h3>🧠 Market Sentiment</h3>
+                    <div class="sentiment-item">
+                        <span class="sentiment-label">Social Volume:</span>
+                        <span class="sentiment-value" id="socialVolume">15,420 mentions</span>
+                    </div>
+                    <div class="sentiment-item">
+                        <span class="sentiment-label">Sentiment Score:</span>
+                        <span class="sentiment-value bullish" id="sentimentScore">+12.5</span>
+                    </div>
+                    <div class="sentiment-item">
+                        <span class="sentiment-label">Trending Words:</span>
+                        <span class="sentiment-value" id="trendingWords">bullrun, pump, moon</span>
+                    </div>
+                </div>
+
+                <!-- Whale Activity -->
+                <div class="whale-panel">
+                    <h3>🐋 Whale Activity</h3>
+                    <div class="whale-transactions" id="whaleTransactions">
+                        <div class="whale-tx">
+                            <span class="whale-amount">$2.5M</span>
+                            <span class="whale-type buy">BUY</span>
+                            <span class="whale-time">2m ago</span>
+                        </div>
+                        <div class="whale-tx">
+                            <span class="whale-amount">$1.8M</span>
+                            <span class="whale-type buy">BUY</span>
+                            <span class="whale-time">15m ago</span>
+                        </div>
+                        <div class="whale-tx">
+                            <span class="whale-amount">$950K</span>
+                            <span class="whale-type sell">SELL</span>
+                            <span class="whale-time">1h ago</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Funding Rates -->
+                <div class="funding-panel">
+                    <h3>💰 Funding Rates</h3>
+                    <div class="funding-rates" id="fundingRates">
+                        <div class="funding-item">
+                            <span class="exchange">Binance:</span>
+                            <span class="rate positive">+0.0125%</span>
+                        </div>
+                        <div class="funding-item">
+                            <span class="exchange">Bybit:</span>
+                            <span class="rate positive">+0.0089%</span>
+                        </div>
+                        <div class="funding-item">
+                            <span class="exchange">OKX:</span>
+                            <span class="rate negative">-0.0034%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Panel - Trading Signals -->
+        <div class="signals-panel">
+            <h3>⚡ Live Trading Signals</h3>
+            <div class="signals-container" id="signalsContainer">
+                <div class="signal-item bullish">
+                    <div class="signal-header">
+                        <span class="signal-pair">BTC/USDT</span>
+                        <span class="signal-type">LONG</span>
+                        <span class="signal-confidence">95%</span>
+                    </div>
+                    <div class="signal-details">
+                        Entry: $43,150 | Target: $45,200 | SL: $42,800
+                    </div>
+                </div>
+                <div class="signal-item bearish">
+                    <div class="signal-header">
+                        <span class="signal-pair">ETH/USDT</span>
+                        <span class="signal-type">SHORT</span>
+                        <span class="signal-confidence">88%</span>
+                    </div>
+                    <div class="signal-details">
+                        Entry: $2,650 | Target: $2,580 | SL: $2,720
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
